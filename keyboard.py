@@ -23,8 +23,6 @@ button_add_token = types.KeyboardButton('Добавить жетон')
 button_dont_want_add_token = types.KeyboardButton('Не хочу добавлять жетон')
 buttom_get_token = types.KeyboardButton('Достать жетон')
 
-
-
 # Keyboards
 keyboard_add_token = types.ReplyKeyboardMarkup(
     resize_keyboard=True

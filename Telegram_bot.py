@@ -96,10 +96,9 @@ def start(message):
     chat_id = message.chat.id
     bot.send_message(
         chat_id=chat_id,
-        text=f'Я мешок, я мешок. Вот что я могу',
+        text='Я мешок, я мешок. Вот что я могу',
         reply_markup=keyboard_main
     )
-
 
 
 def main():

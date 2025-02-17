@@ -52,8 +52,6 @@ class Bag():
             token_set = ' '.join(self.token_set)
             return f'В мешке лежат жетоны: {token_set}'
 
-
-
     def delete_token(self):
         pass
 
@@ -61,23 +59,9 @@ class Bag():
         pass
 
 
-
-
-
-
 def main():
     """Main."""
-    bag_01 = Bag()
-    print(bag_01)
-    print('Добавим в мешок жетон')
-    bag_01.add_token('-1')
-    print(bag_01)
-    print('Добавим в мешок несколько жетонов')
-    bag_01.add_token_set('-1 -1 +1 0')
-    print(bag_01)
-    print('Вытащим один жетон')
-    print(f'Вы вытащили жетон {bag_01.get_token()}')
-
+    pass
 
 
 if __name__ == '__main__':
