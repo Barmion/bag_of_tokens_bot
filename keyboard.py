@@ -1,4 +1,5 @@
 from telebot import types
+import db
 
 # Buttons
 button_plus_1 = types.KeyboardButton('+1')
@@ -20,8 +21,29 @@ button_tablet = types.KeyboardButton('🗿')
 
 button_what_in_bag = types.KeyboardButton('Что в мешке?')
 button_add_token = types.KeyboardButton('Добавить жетон')
+button_delete_token = types.KeyboardButton('Удалить жетон')
 button_dont_want_add_token = types.KeyboardButton('Не хочу добавлять жетон')
+button_dont_want_delete_token = types.KeyboardButton('Не хочу удалять жетоны')
 buttom_get_token = types.KeyboardButton('Достать жетон')
+
+TOKENS_BUTTONS = {
+    '+1': button_plus_1,
+    '0': button_0,
+    '-1': button_minus_1,
+    '-2': button_minus_2,
+    '-3': button_minus_3,
+    '-4': button_minus_4,
+    '-5': button_minus_5,
+    '-6': button_minus_6,
+    '-7': button_minus_7,
+    '-8': button_minus_8,
+    '⭐️': button_star,
+    '😶‍🌫️': button_hood,
+    '🐙': button_kthulhu,
+    '💀': button_skull,
+    '🗿': button_tablet,
+    '👹': button_tentacle
+}
 
 # Keyboards
 keyboard_add_token = types.ReplyKeyboardMarkup(
@@ -47,10 +69,22 @@ keyboard_add_token = types.ReplyKeyboardMarkup(
     ).add(
         button_dont_want_add_token
     )
+
+
 keyboard_main = types.ReplyKeyboardMarkup(resize_keyboard=True).add(
     button_what_in_bag
     ).add(
         button_add_token
     ).add(
         buttom_get_token
+    ).add(
+        button_delete_token
     )
+
+
+def keyboard_delete_token(id):
+    token_set = (db.get_bag_from_db(id=id))
+    keyboard_delete_token = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=8)
+    buttons = [token for index, token in enumerate(token_set) if token not in token_set[:index]]
+    keyboard_delete_token.add(*buttons).add(button_dont_want_delete_token)
+    return keyboard_delete_token
