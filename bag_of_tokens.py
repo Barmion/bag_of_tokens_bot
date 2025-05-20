@@ -58,19 +58,6 @@ def what_in_bag(id):
         return f'В мешке лежат жетоны: {token_set}'
 
 
-# def add_token_set(self, token_set: str) -> None:
-#     """Add token set to the bag."""
-#     if not isinstance(token_set, str):
-#         token_set = str(token_set)
-#     split_token_set = token_set.split(' ')
-#     for token in split_token_set:
-#         if token not in TOKENS:
-#             print(f'Жетона {token} не существует. Попробуйте снова. '
-#                     f'Список возможных жетонов: {TOKENS}')
-#             return
-#         self.token_set.append(token)
-#     print(f'Набор жетонов {token_set} успешно добавлен в мешок.')
-
 def main():
     """Main."""
     pass
