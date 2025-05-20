@@ -6,7 +6,12 @@ from telebot import TeleBot
 import bag_of_tokens
 from constants import TOKENS_STR, TOKENS_STIKERS
 from keyboard import keyboard_add_token, keyboard_main
-from exceptions import UnexpectedToken, DontWantAddToken, EmptyBag, DontWantDeleteToken
+from exceptions import (
+    UnexpectedToken,
+    DontWantAddToken,
+    EmptyBag,
+    DontWantDeleteToken
+)
 import db
 import keyboard
 
@@ -35,16 +40,6 @@ def add_token(message):
         reply_markup=keyboard_add_token
     )
     bot.register_next_step_handler(message, add_token_input)
-
-
-# def add_wrong_token(message):
-#     chat_id = message.chat.id
-#     bot.send_message(
-#         chat_id=chat_id,
-#         text='Какой жетон добавить?',
-#         reply_markup=keyboard_add_token
-#     )
-#     bot.register_next_step_handler(message, add_token_input)
 
 
 def add_token_input(message):
@@ -137,12 +132,7 @@ def get_token(message):
             sticker=sticker,
             reply_markup=keyboard_main
         )
-    db.add_token(token=token, table='users_stats', id=chat_id)
-
-
-@bot.message_handler(content_types=['sticker'])
-def sticker_id(message):
-    bot.reply_to(message, f'айди данного стикера - {message.sticker.file_id}')
+        db.add_token(token=token, table='users_stats', id=chat_id)
 
 
 @bot.message_handler(commands=['start'])

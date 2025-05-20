@@ -84,7 +84,9 @@ keyboard_main = types.ReplyKeyboardMarkup(resize_keyboard=True).add(
 
 def keyboard_delete_token(id):
     token_set = (db.get_bag_from_db(id=id))
-    keyboard_delete_token = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=8)
+    keyboard_delete_token = types.ReplyKeyboardMarkup(
+        resize_keyboard=True,
+        row_width=8)
     buttons = [token for index, token in enumerate(token_set) if token not in token_set[:index]]
     keyboard_delete_token.add(*buttons).add(button_dont_want_delete_token)
     return keyboard_delete_token

@@ -1,5 +1,5 @@
 import sqlite3
-from functools import wraps, lru_cache
+from functools import wraps
 
 from constants import TOKENS_NAMES, TOKENS
 
@@ -113,6 +113,7 @@ def add_token(cursor, token, table, id):
     request = f'UPDATE {table} SET {column} = {column} + 1 WHERE id = {id}'
     cursor.execute(request)
 
+
 @open_close_db_decorator
 def get_bag_from_db(cursor, id):
     """Возвращает мешок в виде списка лежащих в нём жетонов."""
@@ -134,6 +135,7 @@ def delete_token(cursor, token, table, id):
     column = TOKENS_NAMES.get(token)
     request = f'UPDATE {table} SET {column} = {column} - 1 WHERE id = {id}'
     cursor.execute(request)
+
 
 def main():
     make_db()

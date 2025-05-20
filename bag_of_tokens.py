@@ -4,7 +4,12 @@ import random
 
 import db
 from constants import TOKENS
-from exceptions import DontWantAddToken, DontWantDeleteToken, EmptyBag, UnexpectedToken
+from exceptions import (
+    DontWantAddToken,
+    DontWantDeleteToken,
+    EmptyBag,
+    UnexpectedToken
+)
 
 
 def get_token(id) -> None:
@@ -51,7 +56,6 @@ def what_in_bag(id):
     else:
         token_set = ' '.join(token_set)
         return f'В мешке лежат жетоны: {token_set}'
-
 
 
 # def add_token_set(self, token_set: str) -> None:
